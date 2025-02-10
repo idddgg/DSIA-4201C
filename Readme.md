@@ -162,8 +162,8 @@ ___
 
 Un script EST dédié pour chaque type de véhicule (electrique.py, diesel.py, essence.py, hybride.py) : il permet de récupèrer dynamiquement les modèles depuis MongoDB, de génèrer une mise en page spécifique pour chaque catégorie.
 
-- *def.py* : Centralise la gestion du **carrousel interactif** et facilite la navigation entre les images. On peut retrouver également ci-dessous par exemple une partie du script qui permet ainsi de naviguer entre les images des modèles BMW :                              ```
-def create_carousel(fuel_type):
+- *def.py* : Centralise la gestion du **carrousel interactif** et facilite la navigation entre les images. On peut retrouver également ci-dessous par exemple une partie du script qui permet ainsi de naviguer entre les images des modèles BMW :                              
+```def create_carousel(fuel_type):
     cars = get_cars_by_fuel_type(fuel_type)
     
     if not cars:
@@ -232,9 +232,9 @@ def create_carousel(fuel_type):
         ),
     ], style={'textAlign': 'center'})
 
-# Callback pour gérer la navigation dans le carrousel
+     # Callback pour gérer la navigation dans le carrousel
 
-def register_callbacks(app, fuel_type):
+ def register_callbacks(app, fuel_type):
     @app.callback(
         Output('current-image-index', 'data'),
         Input('prev-button', 'n_clicks'),
