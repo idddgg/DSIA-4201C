@@ -1,14 +1,14 @@
-Data Engineering - GAMOUH Imad et DUONG Tony
+# Data Engineering - Projet GAMOUH Imad et DUONG Tony 
 
-1. Prérequis
+**Prérequis**
 
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
-A. Docker
+## A. Docker ##
 
 Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés.
 
-B. Git
+## B. Git ##
 
 Git est nécessaire pour cloner le projet depuis un repository.
 
@@ -60,7 +60,7 @@ Ce système modulaire permet une isolation entre les composants, ce qui simplifi
 
 3. Partie détaillée par structure
 
-A. Scraping 
+### A. Scraping ###
 
 Le service Scrapy collecte des données sur le site web BMW et les envoie à MongoDB. Les spiders permettent une extraction ciblée et efficace :
 
@@ -98,7 +98,7 @@ Ainsi, on peut retenir les éléments suivants sur la partie Scraping:
 . Évolutivité : Ajouter de nouvelles cibles ou adapter les spiders existants est simplifié grâce à la structure modulaire du projet.
 
 
-B. Stockage (à laide de MongoDB)
+### B. Stockage (à l'aide de MongoDB) ###
 
 MongoDB joue un rôle clé dans ce projet en stockant deux types principaux de données scrappées :
 
@@ -141,7 +141,7 @@ Cette architecture assure une fiabilité maximale pour la conservation des donn�
 En adoptant cette approche, le projet bénéficie d’une gestion efficace des ressources, et permet d'éviter les contraintes de stockage local et assure un affichage rapide et dynamique des contenus.
 
 
-C. Affichage (à l'aide de Dash)
+### C. Affichage (à l'aide de Dash) ###
 
 Dash offre une interface utilisateur dynamique pour visualiser les données scrappées. L'architecture du code a été pensée pour faciliter la maintenance et l'évolution en séparant chaque composant clé dans des scripts dédiés.
 
@@ -164,7 +164,7 @@ L'approche modulaire garantit une flexibilité maximale, permettant d'ajouter ou
 Carrousel interactif :
 Permet de naviguer entre les images des modèles BMW grâce à un système de pagination dynamique.
 
-@app.callback(
+```@app.callback(
     Output("page-content", "children"),
     Input("url", "pathname")
 )
@@ -172,7 +172,7 @@ def display_page(pathname):
     if pathname == "/electrique":
         return create_electrique_layout()
     ...
-
+```
 Cette structure rend l'application hautement maintenable et évolutive, assurant une expérience fluide aussi bien pour les utilisateurs que pour les développeurs.
 
 Ce projet met en avant une architecture moderne et un code bien structuré, rendant la collaboration entre développeurs fluide et efficace.
