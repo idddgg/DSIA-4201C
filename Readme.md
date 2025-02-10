@@ -70,7 +70,8 @@ En accédant à la page principale du site, on découvre une vidéo représentan
 # - Page d'accueil #
 ![Page dédiés aux véhicules électriques](DataEngineerTools/pngforgitrmd/Accueil.png)
 
-Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
+Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW.                                                                                                                                  En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée au type de carburant sélectionné. Sur cette page, tous les modèles correspondants sont présentés, avec une image du véhicule et des informations détaillées, telles que le prix. Il est possible de naviguer entre les modèles à l’aide de deux boutons situés sur les côtés. 
+
 # - Véhicules Electriques #
 ![Page dédiés aux véhicules électriques](DataEngineerTools/pngforgitrmd/Electrique.png)
 
@@ -85,8 +86,6 @@ Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les
 
 # - Véhicules Hybrides #
 ![Page dédiés aux véhicules hybrides](DataEngineerTools/pngforgitrmd/Hybride.png)
-
-En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée au type de carburant sélectionné. Sur cette page, tous les modèles correspondants sont présentés, avec une image du véhicule et des informations détaillées, telles que le prix. Il est possible de naviguer entre les modèles à l’aide de deux boutons situés sur les côtés.
 
 Enfin, une image située en bas de la page met en avant la qualité remarquable des intérieurs BMW.
 Une vidéo *Video.mkv* disponible à la racine du projet est disponible montrant toutes les fonctionnalités du site.
