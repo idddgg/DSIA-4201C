@@ -65,17 +65,8 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 
 #### 3. Interface du site #### 
 
-
-Voici une vidéo montrant les fonctionnalités du site:
-
-<video width="640" height="360" controls>
-  <source src="https://raw.githubusercontent.com/idddgg/AP-4209-Projet/master/DataEngineerTools/monvideo.mkv" type="video/x-matroska">
-  Votre navigateur ne supporte pas la lecture de vidéos.
-</video>
-
-
+Une vidéo *Video.mkv* disponible à la racine du projet est disponible montrant toutes les fonctionnalités du site.
 En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.
-
 
 # - Page d'accueil #
 ![Page dédiés aux véhicules électriques](DataEngineerTools/pngforgitrmd/Accueil.png)
@@ -108,8 +99,6 @@ Enfin, une image située en bas de la page met en avant la qualité remarquable 
 
 # - Design intérieur BMW #
 ![Page dédiés aux véhicules hybrides](DataEngineerTools/pngforgitrmd/image.png)
-
-Une vidéo *Video.mkv* disponible à la racine du projet est disponible montrant toutes les fonctionnalités du site.
 
 ## Partie Technique ##
 
