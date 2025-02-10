@@ -10,20 +10,12 @@ Avant de lancer ce projet, assurez-vous que votre environnement de développemen
 
 #### A. Docker ####
 
-<<<<<<< HEAD
 Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés : il permet à chaque service de disposer de son propre environnement avec toutes ses dépendances, garantissant ainsi qu'il fonctionne de la même manière sur n'importe quelle machine. En résumé, Docker rend le système plus stable, portable et facile à maintenir.
-=======
-## A. Docker ##
->>>>>>> 87843a4cc9064046c0dc72bed45c860988f8faf5
 
 #### B. Git ####
 
-<<<<<<< HEAD
 Git est nécessaire pour cloner le projet depuis un repository : il permet de copier l'intégralité du projet sur son ordinateur. 
 Pour pouvoir cloner le répertoire, on se place dans le répertoire ou l'on souhaite cloner le programme puis on exécute la commande dans le bash :
-=======
-![Description de l'image](Accueil.png)
->>>>>>> 87843a4cc9064046c0dc72bed45c860988f8faf5
 
 `cd <Adresse du répertoire>`
 
