@@ -1,6 +1,7 @@
 # Data Engineering - Projet GAMOUH Imad et DUONG Tony 
 ___
-                                               ## Prérequis ##
+
+## Prérequis ##
 ___
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
