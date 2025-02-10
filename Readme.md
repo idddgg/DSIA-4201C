@@ -5,9 +5,15 @@ ___
 ___
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
+
+___
+___
 ## A. Docker ##
 
 Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés.
+
+___
+___
 
 ## B. Git ##
 
