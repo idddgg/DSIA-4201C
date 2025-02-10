@@ -6,15 +6,18 @@ ___
 
 ___
 
-Ce projet repose sur Docker Compose pour orchestrer trois services principaux :
+Ce projet vise à récupérer tous les modèles automobiles de BMW et à les afficher sur notre propre interface. Pour ce faire, il repose sur trois services orchestrés de manière complémentaire :
 
-Scraper : Le conteneur Scrapy exécute des spiders pour collecter des données (modèles BMW, vidéos, logos) et les insère dans MongoDB.
+**1. Scraper :**
+Le conteneur Scrapy exécute des spiders pour collecter des données relatives aux modèles BMW, ainsi que des vidéos et des logos. Ces informations sont ensuite insérées dans la base de données MongoDB.
 
-MongoDB : Garde les données scrappées dans des collections comme bmw_models et bmw_videos.
+**2. MongoDB :**
+Cette base de données stocke toutes les données scrappées, organisées en collections telles que bmw_models pour les modèles automobiles et bmw_videos pour les éléments multimédias (vidéos, logos).
 
-Dash : Récupère les données depuis MongoDB pour les afficher dynamiquement dans un dashboard.
+**3. Dash :**
+L'interface développée avec Dash récupère dynamiquement les données depuis MongoDB afin de les afficher dans un dashboard interactif.
 
-Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
+Avant de lancer ce projet, assurez-vous que votr
 
 
 ## 2. Prérequis ##
@@ -75,7 +78,7 @@ En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée a
 Enfin, une image située en bas de la page met en avant la qualité remarquable des intérieurs BMW.
 Une vidéo est disponible montrant toutes les fonctionnalités du site.
 
-## Détail ##
+## Partie Technique ##
 
 ### A. Scraping ###
 
@@ -153,15 +156,15 @@ ___
 
 **Dash** offre une interface utilisateur dynamique pour visualiser les données scrappées. L'architecture du code a été pensée pour faciliter la maintenance et l'évolution en séparant chaque composant clé dans des scripts dédiés. On peut voir ainsi un exemple de l'architecture modulaire :
 
-- header.py : Gère l'affichage dynamique de l'en-tête avec les logos récupérés depuis MongoDB.
+- *header.py* : Gère l'affichage dynamique de l'en-tête avec les logos récupérés depuis MongoDB.
 
-- footer.py : Contient le pied de page et les boutons de navigation globaux.
+- *footer.py* : Contient le pied de page et les boutons de navigation globaux.
 
-- main_content.py : Page d'accueil affichant une vidéo et les liens vers les différentes catégories de véhicules.
+- *main_content.py* : Page d'accueil affichant une vidéo et les liens vers les différentes catégories de véhicules.
 
 Un script EST dédié pour chaque type de véhicule (electrique.py, diesel.py, essence.py, hybride.py) : il permet de récupèrer dynamiquement les modèles depuis MongoDB, de génèrer une mise en page spécifique pour chaque catégorie.
 
-- def.py : Centralise la gestion du carrousel et facilite la navigation entre les images.
+- *def.py* : Centralise la gestion du carrousel et facilite la navigation entre les images.
 
 Avec les autres scripts, ils permettent d'avoir une approche modulaire garantissant une certaine flexibilité et permettant d'ajouter ou de modifier facilement une catégorie sans impacter l'ensemble du projet.
 
