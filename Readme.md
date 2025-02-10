@@ -67,13 +67,13 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 
 En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
 # - Véhicules Electriques #
-![Description de l'image](DataEngineerToolsp/ngforgitrmd/Electrique.png)
-# - Véhicules Essence # 
-![Description de l'image](DataEngineerTools/pngforgitrmd/Essence.png)
+![Page dédiés aux véhicules électriques](DataEngineerToolsp/ngforgitrmd/Electrique.png)
+# - Véhicules Essences # 
+![Page dédiés aux véhicules essences](DataEngineerTools/pngforgitrmd/Essence.png)
 # - Véhicules Diesel #
-![Description de l'image](DataEngineerTools/pngforgitrmd/Diesel.png)
+![Page dédiés aux véhicules diesel](DataEngineerTools/pngforgitrmd/Diesel.png)
 # - Véhicules Hybrides #
-![Description de l'image](DataEngineerTools/pngforgitrmd/Hybride.png)
+![Page dédiés aux véhicules hybrides](DataEngineerTools/pngforgitrmd/Hybride.png)
 
 En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée au type de carburant sélectionné. Sur cette page, tous les modèles correspondants sont présentés, avec une image du véhicule et des informations détaillées, telles que le prix. Il est possible de naviguer entre les modèles à l’aide de deux boutons situés sur les côtés.
 
