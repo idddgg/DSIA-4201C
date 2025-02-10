@@ -162,13 +162,7 @@ ___
 
 Un script EST dédié pour chaque type de véhicule (electrique.py, diesel.py, essence.py, hybride.py) : il permet de récupèrer dynamiquement les modèles depuis MongoDB, de génèrer une mise en page spécifique pour chaque catégorie.
 
-- *def.py* : Centralise la gestion du carrousel et facilite la navigation entre les images.
-
-Avec les autres scripts, ils permettent d'avoir une approche modulaire garantissant une certaine flexibilité et permettant d'ajouter ou de modifier facilement une catégorie sans impacter l'ensemble du projet.
-
-On peut retrouver également ci-dessous par exemple une partie du script gérant le **carrousel interactif** qui permet de naviguer entre les images des modèles BMW grâce à un système de pagination dynamique.
-
-```
+- *def.py* : Centralise la gestion du **carrousel interactif** et facilite la navigation entre les images. On peut retrouver également ci-dessous par exemple une partie du script qui permet ainsi de naviguer entre les images des modèles BMW :                              ```
 def create_carousel(fuel_type):
     cars = get_cars_by_fuel_type(fuel_type)
     
@@ -266,6 +260,11 @@ def register_callbacks(app, fuel_type):
         cars = get_cars_by_fuel_type(fuel_type)
         return cars[image_index]['image_url']
 ```
+
+L’ensemble des données est géré par le fichier *database.py*, qui centralise les interactions avec la base MongoDB et permet de récupérer dynamiquement les informations nécessaires pour alimenter les différentes pages du site.
+
+Avec les autres scripts, ils permettent d'avoir une approche modulaire garantissant une certaine flexibilité et permettant d'ajouter ou de modifier facilement une catégorie sans impacter l'ensemble du projet.
+
 ___
 
 Globalement, ce projet permet de récupérer les données de BMW tout en gardant une architecture moderne et un code bien structuré.
