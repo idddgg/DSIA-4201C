@@ -17,17 +17,15 @@ Cette base de données stocke toutes les données scrappées, organisées en col
 **3. Dash :**
 L'interface développée avec Dash récupère dynamiquement les données depuis MongoDB afin de les afficher dans un dashboard interactif.
 
-Avant de lancer ce projet, assurez-vous que votr
+
+## 1. Prérequis ##
 
 
-## 2. Prérequis ##
-
-
-#### A. Docker ####
+#### 1. Docker ####
 
 Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés : il permet à chaque service de disposer de son propre environnement avec toutes ses dépendances, garantissant ainsi qu'il fonctionne de la même manière sur n'importe quelle machine. En résumé, Docker rend le système plus stable, portable et facile à maintenir.
 
-#### B. Git ####
+#### 2. Git ####
 
 Git est nécessaire pour cloner le projet depuis un repository : il permet de copier l'intégralité du projet sur son ordinateur. 
 Pour pouvoir cloner le répertoire, on se place dans le répertoire ou l'on souhaite cloner le programme puis on exécute la commande dans le bash :
@@ -65,7 +63,7 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 *Arrêter tous les services :*
 `docker-compose down`
 
-**2. Interface du site**
+#### 3. Interface du site#### 
 
 En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
 - électriques
