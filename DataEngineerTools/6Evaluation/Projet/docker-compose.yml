@@ -1,0 +1,35 @@
+services:
+  scraper:
+    build:
+      context: ./Scrapy
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      - MONGO_URI=mongodb://db:27017
+    volumes:
+      - ./Scrapy:/app
+    command: /bin/sh -c "scrapy crawl bmw_electric_video && scrapy crawl bmw_video && scrapy crawl bmw_models && scrapy crawl bmw_specific_image"
+
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata:/data/db
+
+  dash:
+    build:
+      context: ./Dash
+      dockerfile: Dockerfile
+    depends_on:
+      - scraper
+      - db
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./Dash:/app
+    environment:
+      - MONGO_URI=mongodb://db:27017
+volumes:
+  dbdata:
