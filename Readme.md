@@ -17,7 +17,7 @@ Dash : Récupère les données depuis MongoDB pour les afficher dynamiquement da
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
 
-## 2. Prérequis##
+## 2. Prérequis ##
 
 
 #### A. Docker ####
@@ -108,83 +108,164 @@ Ainsi, on peut retenir les éléments suivants sur la partie Scraping:
 
 ___
 
-### B. Stockage (à l'aide de MongoDB) ###
+### B. Stockage des données scrapées (à l'aide de MongoDB) ###
 
-MongoDB joue un rôle clé dans ce projet en stockant deux types principaux de données scrappées :
+**MongoDB** joue un rôle clé dans ce projet en stockant deux types principaux de données scrappées :                                    
 
-Les modèles de voitures et leurs caractéristiques.
-
-Les URL d’images ou de vidéos isolées pour un affichage dynamique.
+- Les modèles de voitures et leurs caractéristiques.
+- Les URL des images et des vidéos.
 
 Contrairement aux bases de données classiques qui stockent localement des fichiers, ici nous avons opté pour une approche basée sur les URLs. Cette solution permet :
 
-. Une gestion optimisée de l’espace disque, car aucun fichier image ou vidéo n’est enregistré localement.
+1. Une gestion optimisée du stockage local, car aucun fichier image ou vidéo n’est enregistré localement.
 
-. Une mise à jour automatique des médias affichés sans nécessiter de duplication de données.
+2. Une mise à jour automatique des médias affichés sans nécessiter de duplication de données.
 
-. Une meilleure scalabilité puisque le stockage des fichiers est externalisé sur des serveurs distants.
+3. Une meilleure scalabilité puisque le stockage des fichiers est externalisé sur des serveurs distants.
 
-Ainsi, on a plusieurs collections :
+Ainsi, comme cité précédemment, on a plusieurs collections :
 
-- bmw_models : Cette collection conserve les détails complets des modèles BMW, y compris leurs noms, types de carburant, prix, et URL des images associées. Par exemple :
+- bmw_models : Cette collection conserve les détails complets des modèles BMW, y compris leurs noms, types de carburant, prix, et URL des images associées. Par exemple, voici un aperçu respectif de la collection ***bmw_models*** et ***bmw_videos*** :
 
-{
+`{
     "model": "BMW i4",
     "fuel_type": "électrique",
     "price": "à partir de 55 900 €",
     "image_url": "https://bmw.fr/image.jpg"
-}
+}`
 
-- bmw_videos : Cette collection est dédiée aux éléments médias tels que les vidéos promotionnelles ou les logos spécifiques. Par exemple :
-
-{
+`{
     "video_url": "https://bmwgroup.com/vidéo.mp4"
-}
+}`
 
-Grâce à ce système, les médias sont accessibles en temps réel sans surcharger le stockage local. L’affichage des modèles et des vidéos est instantané, et tout changement côté serveur distant est immédiatement répercuté sur l’interface Dash.
-MongoDB est déployé via Docker avec persistance des données dans un volume, garantissant que les données restent accessibles même après un redémarrage :
+Grâce à ce système, les médias sont accessibles en temps réel et l’affichage des modèles et des vidéos est instantané, et tout changement côté serveur distant est immédiatement répercuté sur l’interface **Dash**.
+Ainsi, le déploiement de **MongoDB** via **Docker** permet le stockage de données dans un volume, garantissant que les données restent accessibles même après un redémarrage :
 
-volumes:
+`volumes:
   dbdata:/data/db
+`
 
-Cette architecture assure une fiabilité maximale pour la conservation des données et simplifie les opérations de sauvegarde. De plus, les requêtes sont optimisées pour interagir rapidement avec l'interface Dash.
-En adoptant cette approche, le projet bénéficie d’une gestion efficace des ressources, et permet d'éviter les contraintes de stockage local et assure un affichage rapide et dynamique des contenus.
+Avec cette approche, le projet bénéficie d’une gestion efficace des ressources, et permet d'éviter les contraintes de stockage local et assure un affichage rapide et dynamique des contenus.
 
 ___
 
 ### C. Affichage (à l'aide de Dash) ###
 
-Dash offre une interface utilisateur dynamique pour visualiser les données scrappées. L'architecture du code a été pensée pour faciliter la maintenance et l'évolution en séparant chaque composant clé dans des scripts dédiés.
+**Dash** offre une interface utilisateur dynamique pour visualiser les données scrappées. L'architecture du code a été pensée pour faciliter la maintenance et l'évolution en séparant chaque composant clé dans des scripts dédiés. On peut voir ainsi un exemple de l'architecture modulaire :
 
-- Exemple de l'architecture modulaire
+- header.py : Gère l'affichage dynamique de l'en-tête avec les logos récupérés depuis MongoDB.
 
-. header.py : Gère l'affichage dynamique de l'en-tête avec les logos récupérés depuis MongoDB.
+- footer.py : Contient le pied de page et les boutons de navigation globaux.
 
-. footer.py : Contient le pied de page et les boutons de navigation globaux.
-
-. main_content.py : Page d'accueil affichant une vidéo et les liens vers les différentes catégories de véhicules.
+- main_content.py : Page d'accueil affichant une vidéo et les liens vers les différentes catégories de véhicules.
 
 Un script EST dédié pour chaque type de véhicule (electrique.py, diesel.py, essence.py, hybride.py) : il permet de récupèrer dynamiquement les modèles depuis MongoDB, de génèrer une mise en page spécifique pour chaque catégorie.
 
-. def.py : Centralise la gestion du carrousel et facilite la navigation entre les images.
+- def.py : Centralise la gestion du carrousel et facilite la navigation entre les images.
 
-L'approche modulaire garantit une flexibilité maximale, permettant d'ajouter ou de modifier une catégorie sans impacter l'ensemble du projet.
+Avec les autres scripts, ils permettent d'avoir une approche modulaire garantissant une certaine flexibilité et permettant d'ajouter ou de modifier facilement une catégorie sans impacter l'ensemble du projet.
 
-- Fonctionnalités clés
+On peut retrouver également ci-dessous par exemple une partie du script gérant le **carrousel interactif** qui permet de naviguer entre les images des modèles BMW grâce à un système de pagination dynamique.
 
-Carrousel interactif :
-Permet de naviguer entre les images des modèles BMW grâce à un système de pagination dynamique.
-
-```@app.callback(
-    Output("page-content", "children"),
-    Input("url", "pathname")
-)
-def display_page(pathname):
-    if pathname == "/electrique":
-        return create_electrique_layout()
-    ...
 ```
-Cette structure rend l'application hautement maintenable et évolutive, assurant une expérience fluide aussi bien pour les utilisateurs que pour les développeurs.
+def create_carousel(fuel_type):
+    cars = get_cars_by_fuel_type(fuel_type)
+    
+    if not cars:
+        return html.P("Aucune voiture disponible pour ce type de carburant.", style={"textAlign": "center", "fontSize": "18px"})
+    
+    return html.Div([
+        dcc.Store(id='current-image-index', data=0),
+        
+        html.Div(
+            style={
+                'position': 'relative',
+                'width': '800px',
+                'height': '450px',
+                'margin': '0 auto',
+                'borderRadius': '10px',
+                'overflow': 'hidden',
+                'boxShadow': '0px 4px 8px rgba(0, 0, 0, 0.2)'
+            },
+            children=[
+                html.Img(
+                    id='displayed-image',
+                    src=cars[0]['image_url'],
+                    style={'width': '100%', 'height': '100%', 'objectFit': 'cover', 'borderRadius': '10px'}
+                ),
+                
+                html.Button(
+                    "❮",
+                    id='prev-button',
+                    n_clicks=0,
+                    style={
+                        'position': 'absolute',
+                        'top': '50%',
+                        'left': '10px',
+                        'transform': 'translateY(-50%)',
+                        'fontSize': '24px',
+                        'backgroundColor': 'white',
+                        'border': 'none',
+                        'borderRadius': '50%',
+                        'width': '40px',
+                        'height': '40px',
+                        'cursor': 'pointer',
+                        'opacity': '0.8'
+                    }
+                ),
+                
+                html.Button(
+                    "❯",
+                    id='next-button',
+                    n_clicks=0,
+                    style={
+                        'position': 'absolute',
+                        'top': '50%',
+                        'right': '10px',
+                        'transform': 'translateY(-50%)',
+                        'fontSize': '24px',
+                        'backgroundColor': 'white',
+                        'border': 'none',
+                        'borderRadius': '50%',
+                        'width': '40px',
+                        'height': '40px',
+                        'cursor': 'pointer',
+                        'opacity': '0.8'
+                    }
+                ),
+            ]
+        ),
+    ], style={'textAlign': 'center'})
 
-Ce projet met en avant une architecture moderne et un code bien structuré, rendant la collaboration entre développeurs fluide et efficace.
+# Callback pour gérer la navigation dans le carrousel
+
+def register_callbacks(app, fuel_type):
+    @app.callback(
+        Output('current-image-index', 'data'),
+        Input('prev-button', 'n_clicks'),
+        Input('next-button', 'n_clicks'),
+        prevent_initial_call=True
+    )
+    def update_image_index(prev_clicks, next_clicks):
+        cars = get_cars_by_fuel_type(fuel_type)
+        total_images = len(cars)
+        changed_id = [p['prop_id'] for p in app.callback_context.triggered][0]
+        
+        if 'prev-button' in changed_id:
+            return (prev_clicks - 1) % total_images
+        elif 'next-button' in changed_id:
+            return (next_clicks + 1) % total_images
+        return 0
+    
+    @app.callback(
+        Output('displayed-image', 'src'),
+        Input('current-image-index', 'data')
+    )
+    def display_current_image(image_index):
+        cars = get_cars_by_fuel_type(fuel_type)
+        return cars[image_index]['image_url']
+```
+___
+
+Globalement, ce projet permet de récupérer les données de BMW tout en gardant une architecture moderne et un code bien structuré.
 
