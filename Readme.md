@@ -2,11 +2,23 @@
 
 ___
 
-## Prérequis ##
+##                                                    Scraping du site BMW                                                            ##
 
 ___
 
+Ce projet repose sur Docker Compose pour orchestrer trois services principaux :
+
+Scraper : Le conteneur Scrapy exécute des spiders pour collecter des données (modèles BMW, vidéos, logos) et les insère dans MongoDB.
+
+MongoDB : Garde les données scrappées dans des collections comme bmw_models et bmw_videos.
+
+Dash : Récupère les données depuis MongoDB pour les afficher dynamiquement dans un dashboard.
+
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
+
+
+**2. Prérequis**
+
 
 #### A. Docker ####
 
@@ -27,43 +39,38 @@ Félicitations ! Le projet a été cloné avec succès. Les prochaines étapes c
 
 `cd 6Evaluation\Projet`
 
-Nous pouvons enfin lancer le projet et accéder à notre merveilleux site. Pour cela, on exécute la commande suivante à l'aide de Docker Compose : c'est un outil qui permet de définir et de lancer plusieurs conteneurs Docker en même temps à partir d’un seul fichier. En résumé, il permet de démarrer tous les services nécessaires à notre application (Le scraping, MongoDB et Dash) avec une seule commande, tout en s'assurant qu’ils fonctionnent ensemble correctement.
+Nous pouvons enfin lancer le projet et accéder à notre merveilleux site. Pour cela, on exécute la commande suivante à l'aide de Docker Compose : c'est un outil qui permet de définir et de lancer plusieurs conteneurs Docker en même temps à partir d’un seul fichier.                                                                                                                                En résumé, il permet de démarrer tous les services nécessaires à notre application (Le scraping, MongoDB et Dash) avec une seule commande, tout en s'assurant qu’ils fonctionnent ensemble correctement.
 
 `docker-compose up --build`
 
-Ensuite, dans son navigateur, on saisit l'URL suivante pour accéder au site :
+Après cette étape, tout sera compilé. Il ne reste plus qu'à visualiser en exécutant la commande suivante dans son navigateur ou on saisit l'URL suivante pour accéder au site :
 
 http://127.0.0.1:8050/
 
-Il peut arriver que l'interface Dash ne s'affiche pas correctement. Si cela se produit, il suffit de redémarrer le service Dash avec la commande suivante : docker-compose restart dash puis on refresh le site qui va correctement s'afficher si cela se produit.
+Il peut arriver que l'interface Dash ne s'affiche pas correctement. Dans ce cas, il suffit de redémarrer le service Dash à l'aide de la commande suivante :
 
-la vidéo à la racine du projet permet de comprendre comment fonctionne le site.
+`docker-compose restart dash`
 
-2. Fonctionnement global avec Docker
+Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici quelques commandes supplémentaires pour Docker :                     
 
-Ce projet repose sur Docker Compose pour orchestrer trois services principaux :
+*Construire et lancer tous les services :*
+`docker-compose up --build`
 
-Scraper : Le conteneur Scrapy exécute des spiders pour collecter des données (modèles BMW, vidéos, logos) et les insère dans MongoDB.
+*Vérifier les logs des conteneurs :*
+`docker-compose logs -f`
 
-MongoDB : Garde les données scrappées dans des collections comme bmw_models et bmw_videos.
+*Arrêter tous les services :*
+`docker-compose down`
 
-Dash : Récupère les données depuis MongoDB pour les afficher dynamiquement dans un dashboard.
+**2. Interface du site**
 
-- Interaction des services
+En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : électriques, essence, diesel et hybrides rechargeables.
 
-Le fichier docker-compose.yml configure les services et définit leurs dépendances. Voici les principales commandes pour éxécuter le projet :
+En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée au type de carburant sélectionné. Sur cette page, tous les modèles correspondants sont présentés, avec une image du véhicule et des informations détaillées, telles que le prix. Il est possible de naviguer entre les modèles à l’aide de deux boutons situés sur les côtés.
 
-Construire et lancer tous les services :
+Enfin, une image située en bas de la page met en avant la qualité remarquable des intérieurs BMW.
 
-docker-compose up --build
 
-Vérifier les logs des conteneurs :
-
-docker-compose logs -f
-
-Arrêter tous les services :
-
-docker-compose down
 
 Ce système modulaire permet une isolation entre les composants, ce qui simplifie les tests et la maintenance.
 
