@@ -65,13 +65,24 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 
 #### 3. Interface du site #### 
 
-En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
+En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.
+
+# - Page d'accueil #
+![Page dédiés aux véhicules électriques](DataEngineerTools/pngforgitrmd/Accueil.png)
+
+Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
 # - Véhicules Electriques #
 ![Page dédiés aux véhicules électriques](DataEngineerTools/pngforgitrmd/Electrique.png)
+
+
 # - Véhicules Essences # 
 ![Page dédiés aux véhicules essences](DataEngineerTools/pngforgitrmd/Essence.png)
+
+
 # - Véhicules Diesel #
 ![Page dédiés aux véhicules diesel](DataEngineerTools/pngforgitrmd/Diesel.png)
+
+
 # - Véhicules Hybrides #
 ![Page dédiés aux véhicules hybrides](DataEngineerTools/pngforgitrmd/Hybride.png)
 
