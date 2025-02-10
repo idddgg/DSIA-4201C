@@ -106,7 +106,7 @@ Enfin, une image située en bas de la page met en avant la qualité remarquable 
 
 Le service **Scrapy** collecte des données sur le site web BMW et les envoie à MongoDB. Les spiders permettent une extraction ciblée et efficace :
 
-1. ***bmw_models*** : Ce spider xtrait les modèles, types de carburant, prix et images directement depuis le HTML des pages.
+1. ***bmw_models*** : Ce spider extrait les modèles, types de carburant, prix et images directement depuis le HTML des pages.
 
 2. ***bmw_video*** : Ce spider récupère une vidéo promotionnelle.
 
