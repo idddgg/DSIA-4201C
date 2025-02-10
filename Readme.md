@@ -17,7 +17,7 @@ Dash : Récupère les données depuis MongoDB pour les afficher dynamiquement da
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
 
-**2. Prérequis**
+## 2. Prérequis##
 
 
 #### A. Docker ####
