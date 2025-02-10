@@ -64,55 +64,49 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 
 **2. Interface du site**
 
-En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : électriques, essence, diesel et hybrides rechargeables.
+En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
+- électriques
+- essence
+- diesel 
+- hybrides rechargeables
 
 En cliquant sur l’un de ces boutons, on est redirigé vers une page dédiée au type de carburant sélectionné. Sur cette page, tous les modèles correspondants sont présentés, avec une image du véhicule et des informations détaillées, telles que le prix. Il est possible de naviguer entre les modèles à l’aide de deux boutons situés sur les côtés.
 
 Enfin, une image située en bas de la page met en avant la qualité remarquable des intérieurs BMW.
+Une vidéo est disponible montrant toutes les fonctionnalités du site.
 
-
-
-Ce système modulaire permet une isolation entre les composants, ce qui simplifie les tests et la maintenance.
-
-3. Partie détaillée par structure
+## Détail ##
 
 ### A. Scraping ###
 
-Le service Scrapy collecte des données sur le site web BMW et les envoie à MongoDB. Les spiders permettent une extraction ciblée et efficace :
+Le service **Scrapy** collecte des données sur le site web BMW et les envoie à MongoDB. Les spiders permettent une extraction ciblée et efficace :
 
-bmw_models : Extrait les modèles, types de carburant, prix et images directement depuis le HTML des pages.
+1. ***bmw_models*** : Ce spider xtrait les modèles, types de carburant, prix et images directement depuis le HTML des pages.
 
-bmw_video : Récupère une vidéo promotionnelle.
+2. ***bmw_video*** : Ce spider récupère une vidéo promotionnelle.
 
-bmw_electric_video et bmw_specific_image : Scrape des logos et des images depuis certaines pages, en combinant utilisant Selenium pour gérer les contenus dynamiques.
-
-Cette combinaison de Scrapy pour les contenus statiques et de Selenium pour les contenus dynamiques permet une flexibilité accrue, adaptée aux différents types de données scrapées.
-
-
-Le pipeline Scrapy insère les données dans des collections MongoDB :
-
-bmw_models pour les modèles de voitures.
-
-bmw_videos pour les vidéos,images et logos.
-
-Les fichiers de pipelines et de spiders sont conçus pour être hautement configurables, permettant une adaptation rapide pour d'autres types de données ou sites web. Par exemple, chaque spider est isolé dans son propre fichier, ce qui facilite les modifications ou ajouts futurs.
-
- - Lancer le scraping
+3. ***bmw_electric_video*** et ***bmw_specific_image*** : Ce spider scrape des logos et des images depuis certaines pages, en combinant utilisant Selenium pour gérer les contenus dynamiques.
 
 Chaque spider peut être exécuté individuellement :
 
-docker-compose run scraper scrapy crawl <nom_du_spider>
+`docker-compose run scraper scrapy crawl <nom_du_spider>`
 
-La modularité du code Scrapy permet de modifier simplement le projet, que ce soit pour ajouter de nouveaux spiders ou régler des problèmes. Par ailleurs, les spiders utilisent une architecture claire qui sépare les responsabilités, rendant le code facile à comprendre et à maintenir.
+Cette combinaison de **Scrapy** pour les contenus statiques et de **Selenium** pour les contenus dynamiques permet une grande flexibilité , adaptée aux différents types de données scrapées. Une fois scrapée, le **pipeline** Scrapy insère les données dans deux collections MongoDB :
 
+1. ***bmw_models*** pour les modèles de voitures. 
+
+2. ***bmw_videos*** pour les vidéos,images et logos.
+
+Les fichiers de pipelines et de spiders sont conçus pour être hautement configurables, permettant une adaptation rapide pour d'autres types de données ou sites web.                                                                                                                                    Par exemple, chaque spider est isolé dans son propre fichier, ce qui facilite les modifications ou ajouts futurs.
 Ainsi, on peut retenir les éléments suivants sur la partie Scraping:
 
-. Flexibilité : Le projet gère à la fois des contenus HTML statiques et des contenus dynamiques grâce à Selenium.
+- Flexibilité : Le projet gère à la fois des contenus HTML statiques et des contenus dynamiques grâce à Selenium.
 
-. Organisation : Chaque spider est contenu dans un fichier distinct, rendant les ajustements rapides et intuitifs.
+- Organisation : Chaque spider est contenu dans un fichier distinct, rendant les ajustements rapides et intuitifs.
 
-. Évolutivité : Ajouter de nouvelles cibles ou adapter les spiders existants est simplifié grâce à la structure modulaire du projet.
+- Évolutivité : Ajouter de nouvelles cibles ou adapter les spiders existants est simplifié grâce à la structure modulaire du projet.
 
+___
 
 ### B. Stockage (à l'aide de MongoDB) ###
 
@@ -156,6 +150,7 @@ volumes:
 Cette architecture assure une fiabilité maximale pour la conservation des données et simplifie les opérations de sauvegarde. De plus, les requêtes sont optimisées pour interagir rapidement avec l'interface Dash.
 En adoptant cette approche, le projet bénéficie d’une gestion efficace des ressources, et permet d'éviter les contraintes de stockage local et assure un affichage rapide et dynamique des contenus.
 
+___
 
 ### C. Affichage (à l'aide de Dash) ###
 
