@@ -65,6 +65,15 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 
 #### 3. Interface du site #### 
 
+
+Voici une vidéo montrant les fonctionnalités du site:
+
+<video width="640" height="360" controls>
+  <source src="https://raw.githubusercontent.com/idddgg/AP-4209-Projet/master/DataEngineerTools/monvideo.mkv" type="video/x-matroska">
+  Votre navigateur ne supporte pas la lecture de vidéos.
+</video>
+
+
 En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.
 
 
