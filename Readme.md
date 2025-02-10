@@ -63,7 +63,7 @@ Ensuite, actualisez la page du site qui devrait s'afficher correctement. Voici q
 *Arrêter tous les services :*
 `docker-compose down`
 
-#### 3. Interface du site#### 
+#### 3. Interface du site #### 
 
 En accédant à la page principale du site, on découvre une vidéo représentant l’élégance et l’innovation de BMW.                        Quatre boutons sont ensuite affichés en dessous cette vidéo, représentant les types de véhicules actuellement disponibles sur le marché BMW : 
 - électriques
