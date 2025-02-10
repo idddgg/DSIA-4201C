@@ -1,37 +1,39 @@
 # Data Engineering - Projet GAMOUH Imad et DUONG Tony 
+
 ___
 
 ## Prérequis ##
+
 ___
+
 Avant de lancer ce projet, assurez-vous que votre environnement de développement dispose des outils suivants :
 
+#### A. Docker ####
 
-___
-___
-## A. Docker ##
+Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés : il permet à chaque service de disposer de son propre environnement avec toutes ses dépendances, garantissant ainsi qu'il fonctionne de la même manière sur n'importe quelle machine. En résumé, Docker rend le système plus stable, portable et facile à maintenir.
 
-Docker est essentiel pour exécuter les services (scraping, MongoDB, et Dash) dans des conteneurs isolés.
+#### B. Git ####
 
-___
-___
+Git est nécessaire pour cloner le projet depuis un repository : il permet de copier l'intégralité du projet sur son ordinateur. 
+Pour pouvoir cloner le répertoire, on se place dans le répertoire ou l'on souhaite cloner le programme puis on exécute la commande dans le bash :
 
-## B. Git ##
+`cd <Adresse du répertoire>`
 
-Git est nécessaire pour cloner le projet depuis un repository.
+Ensuite, on exécute la commande suivante dans le bash : 
 
-Pour pouvoir cloner le répertoire :
+`git clone <https://github.com/idddgg/DSIA-4201C>`
 
-git clone <URL_du_repository>
+Félicitations ! Le projet a été cloné avec succès. Les prochaines étapes consisteront à rendre le site pleinement fonctionnel. On se  déplace à présent dans un répertoire spécifique du projet cloné afin de lancer le site en tapant la commande :
 
-Ensuite, une fois cloné, se déplacer dans le répertoire suivant à l'aide de la commande :
+`cd 6Evaluation\Projet`
 
-cd 6Evaluation\Projet
+Nous pouvons enfin lancer le projet et accéder à notre merveilleux site. Pour cela, on exécute la commande suivante à l'aide de Docker Compose : c'est un outil qui permet de définir et de lancer plusieurs conteneurs Docker en même temps à partir d’un seul fichier. En résumé, il permet de démarrer tous les services nécessaires à notre application (Le scraping, MongoDB et Dash) avec une seule commande, tout en s'assurant qu’ils fonctionnent ensemble correctement.
 
-Ensuite, on lance le projet avec Docker Compose :
+`docker-compose up --build`
 
-docker-compose up --build
+Ensuite, dans son navigateur, on saisit l'URL suivante pour accéder au site :
 
-Ensuite, dans son navigateur, on rentre le lien suivant : http://127.0.0.1:8050/
+http://127.0.0.1:8050/
 
 Il peut arriver que l'interface Dash ne s'affiche pas correctement. Si cela se produit, il suffit de redémarrer le service Dash avec la commande suivante : docker-compose restart dash puis on refresh le site qui va correctement s'afficher si cela se produit.
 
